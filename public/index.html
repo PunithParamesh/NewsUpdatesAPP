@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News app</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="main-nav flex container">
+            <a href="#"  onclick="relode()"class="logo">
+                <img src="./logo2.png" alt="">
+            </a>
+            <div class="nav-links">
+                <ul class="flex">
+                    <li class="hover-link nav-item" id="home"    onclick="relode()">Home</li>
+                    <li class="hover-link nav-item" id="sports" onclick="onNavClick('sports')" >Sports</li>
+                    <li class="hover-link nav-item" id="finance" onclick="onNavClick('finance')" >Finance</li>
+                    <li class="hover-link nav-item" id="politics" onclick="onNavClick('politics')" >Politics</li>
+                </ul>
+            </div>
+            <div class="search-bar flex">
+                <input  id="input-search"type="text" placeholder=" e.g:Science" class="news-input">
+                <button id="search-button"class="search-button">Search</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="card-container container flex" id="card-container">
+           
+        </div>
+    </main>
+     <template id="template-card">
+        <div class="card" id="card">
+            <div class="card-header">
+                <img  id="news-image" src="https://via.placeholder.com/400x200" alt="image">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">this is title</h3>
+                <h6 class="news-source" id="news-source">magzine 20/2/2023</h6>
+                <p id="news-dec">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis dolores aspernatur ipsum dolore
+                    saepe harum ipsam officiis distinctio, numquam recusandae.</p>
+            </div>
+        </div>
+     </template>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
