@@ -3,25 +3,29 @@ window.addEventListener("load", () => fetchNews("india"));
 async function fetchNews(query) {
     try {
         const res = await fetch(`/api/news?query=${query}`);
+        console.log("Fetching news for query:", query);
         const data = await res.json();
 
-
+        console.log("Fetched news data:", data);
         bindData(data);
     } catch (error) {
         console.error("Error fetching news:", error);
     }
 }
 
-
 function bindData(articles) {
+    if (!Array.isArray(articles)) {
+        console.error("bindData received invalid articles:", articles);
+        document.getElementById("card-container").innerHTML = "<p>Error loading news.</p>";
+        return;
+    }
+
     const cardContainer = document.getElementById("card-container");
     const templateCard = document.getElementById("template-card");
-
     cardContainer.innerHTML = "";
 
     articles.forEach((article) => {
-        if (!article.image) return; 
-
+        if (!article.image || !article.title || !article.description) return;
         const cardClone = templateCard.content.cloneNode(true);
         fillDataCard(cardClone, article);
         cardContainer.appendChild(cardClone);
